@@ -6,6 +6,7 @@ Datasets used by the CWOLA bump hunt analysis framework.
 
 - **dijet**: Anomaly Detection dijet events from LHC Olympics 2020
 - **bbgg**: Di-Higgs bb + gamma-gamma events
+- **Wqq**: CMS 8 TeV W→qq vs QCD substructure ROOT skims (split into ≤100 MB chunks)
 
 ## Usage
 
