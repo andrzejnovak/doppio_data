@@ -17,17 +17,21 @@ CMS BACON ntuples for boosted hadronic V (W/Z) tagging vs QCD multijet backgroun
 | `JetHT_skim_part2.root` | 1,245,675 | 89 MB | `6734c7bf4978e79f14f4c9576771c3fa` |
 | `JetHT_skim_part3.root` | 1,245,675 | 89 MB | `b30336fdd28a38c41bc29ade9e337ce5` |
 | `JetHT_skim_part4.root` | 1,245,675 | 89 MB | `50cafbbd7350ac781fd832a50da2289b` |
-| **Total** | **9,090,476** | **664 MB** | — |
+| `WQQ_sh.root` (signal MC) | 125,418 | 32 MB | `a4834a3a7f1f79d7f33da2dff0625deb` |
+| `WQQ_s.root` (signal demo) | 749 | 237 KB | `04f629fe7b66654a1dd27035b8e53969` |
+| `ZQQ_sh.root` (signal MC) | 107,867 | 28 MB | `b040739ad75d20bab0e48636bdfeb9d0` |
+| `ZQQ_s.root` (signal demo) | 589 | 197 KB | `eeb75f579f38195aace91d692f88e3d9` |
+| **Total** | **9,324,099** | **724 MB** | — |
 
-All files use ZSTD level-22 compression and stay under the 100 MB GitHub per-file limit.
+The QCD/JetHT/TT skims use ZSTD level-22 compression and stay under the 100 MB GitHub per-file limit. The signal MC files are the original BACON ntuples (125 branches, default ROOT compression) — they were already small enough not to need re-skimming.
 
 ## Sample descriptions
 
 - **TT** — tt̄ Monte Carlo (top quark pair production background, hadronic W's at modest pT)
 - **QCD** — QCD multijet Monte Carlo (the dominant fatjet background)
 - **JetHT** — CMS data primary dataset (unlabeled real collider events used as the training target for CWoLa-style weak supervision)
-
-The `WQQ_sh.root` (signal MC) is not in this skim — see "Skim provenance" below for what was dropped vs kept.
+- **WQQ** — W→qq signal MC; `_sh` is the full sample (125k events), `_s` is a tiny dev subset (749 events) used as the loader's `WQQ_FALLBACK_SIGNAL_FILE`
+- **ZQQ** — Z→qq signal MC; same layout as WQQ (`_sh` full, `_s` dev subset). The Z hadronic resonance sits at ~91 GeV vs the W at ~80 GeV in the `vjet0_msd0` observable.
 
 ## Skim provenance
 
@@ -72,5 +76,9 @@ d9df20ed2f397c370fe3d949af331561  Wqq/JetHT_skim_part0.root
 6734c7bf4978e79f14f4c9576771c3fa  Wqq/JetHT_skim_part2.root
 b30336fdd28a38c41bc29ade9e337ce5  Wqq/JetHT_skim_part3.root
 50cafbbd7350ac781fd832a50da2289b  Wqq/JetHT_skim_part4.root
+a4834a3a7f1f79d7f33da2dff0625deb  Wqq/WQQ_sh.root
+04f629fe7b66654a1dd27035b8e53969  Wqq/WQQ_s.root
+b040739ad75d20bab0e48636bdfeb9d0  Wqq/ZQQ_sh.root
+eeb75f579f38195aace91d692f88e3d9  Wqq/ZQQ_s.root
 EOF
 ```

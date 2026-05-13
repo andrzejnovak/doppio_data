@@ -54,8 +54,8 @@ Used for CWOLA bump hunt in the di-photon mass spectrum, searching for di-Higgs 
 **Source**: CMS BACON ntuples (boosted hadronic V tagging)
 **Description**: Substructure-based W/Z→qq tagging vs QCD multijet, used by `wqq` and `wqq_data` weak-supervision datasets
 **Observable**: vjet0_msd0 (leading fatjet soft-drop mass)
-**Total Size**: 664 MB across 9 split files (all under 100 MB)
-**Last Updated**: 2026-05-12
+**Total Size**: 724 MB across 13 files (QCD/JetHT/TT skims under 100 MB each; signal MC ~28–32 MB)
+**Last Updated**: 2026-05-13
 
 ### Skim recipe
 - Cuts: `vjet0_pt > 300 GeV` AND `vjet0_msd0 > 20 GeV`
@@ -76,6 +76,12 @@ Used for CWOLA bump hunt in the di-photon mass spectrum, searching for di-Higgs 
 | `Wqq/JetHT_skim_part2.root` | 1,245,675 | 89 MB | `6734c7bf4978e79f14f4c9576771c3fa` |
 | `Wqq/JetHT_skim_part3.root` | 1,245,675 | 89 MB | `b30336fdd28a38c41bc29ade9e337ce5` |
 | `Wqq/JetHT_skim_part4.root` | 1,245,675 | 89 MB | `50cafbbd7350ac781fd832a50da2289b` |
+| `Wqq/WQQ_sh.root` (signal MC) | 125,418 | 32 MB | `a4834a3a7f1f79d7f33da2dff0625deb` |
+| `Wqq/WQQ_s.root` (signal demo) | 749 | 237 KB | `04f629fe7b66654a1dd27035b8e53969` |
+| `Wqq/ZQQ_sh.root` (signal MC) | 107,867 | 28 MB | `b040739ad75d20bab0e48636bdfeb9d0` |
+| `Wqq/ZQQ_s.root` (signal demo) | 589 | 197 KB | `eeb75f579f38195aace91d692f88e3d9` |
+
+The W and Z signal MC files are the original BACON ntuples (125 branches, default ROOT compression); they were small enough that the skim/branch reduction applied to QCD/JetHT/TT was unnecessary. The `*_s.root` files are tiny dev subsets used as the loader's `WQQ_FALLBACK_SIGNAL_FILE`.
 
 See `Wqq/README.md` for full provenance, the skim script, and usage notes.
 
@@ -96,5 +102,9 @@ d9df20ed2f397c370fe3d949af331561  Wqq/JetHT_skim_part0.root
 6734c7bf4978e79f14f4c9576771c3fa  Wqq/JetHT_skim_part2.root
 b30336fdd28a38c41bc29ade9e337ce5  Wqq/JetHT_skim_part3.root
 50cafbbd7350ac781fd832a50da2289b  Wqq/JetHT_skim_part4.root
+a4834a3a7f1f79d7f33da2dff0625deb  Wqq/WQQ_sh.root
+04f629fe7b66654a1dd27035b8e53969  Wqq/WQQ_s.root
+b040739ad75d20bab0e48636bdfeb9d0  Wqq/ZQQ_sh.root
+eeb75f579f38195aace91d692f88e3d9  Wqq/ZQQ_s.root
 EOF
 ```
