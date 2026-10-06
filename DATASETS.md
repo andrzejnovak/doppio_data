@@ -49,41 +49,42 @@ Used for CWOLA-style anomaly detection in dijet events. The dataset contains Sta
 ### Usage
 Used for CWOLA bump hunt in the di-photon mass spectrum, searching for di-Higgs production in the bb + gamma-gamma decay channel.
 
-## Wqq (CMS 8 TeV W→qq vs QCD)
+## WqqOpenData (CMS Open Data 2016, 13 TeV, W/Z→qq vs QCD)
 
-**Source**: CMS BACON ntuples (boosted hadronic V tagging)
-**Description**: Substructure-based W/Z→qq tagging vs QCD multijet, used by `wqq` and `wqq_data` weak-supervision datasets
-**Observable**: vjet0_msd0 (leading fatjet soft-drop mass)
-**Total Size**: 724 MB across 13 files (QCD/JetHT/TT skims under 100 MB each; signal MC ~28–32 MB)
-**Last Updated**: 2026-05-13
+**Source**: CMS Open Data, UL2016 NanoAODv9 (JetHT Run2016G+H, 16.4 fb⁻¹; TTToHadronic/SemiLeptonic, W/ZJetsToQQ HT-binned, QCD HT-binned)
+**Description**: Leading AK8 jet (pT > 525 GeV) substructure for W/Z→qq tagging vs QCD, with absolute per-event MC weights (σ × L × genWeight / Σw) and gen matching; used by the `wqq_opendata*` datasets in doppio
+**Observable**: `fj_msoftdrop` (leading AK8 soft-drop mass), analysis window 40–200 GeV
+**Total Size**: 1.05 GB across 16 files (each < 95 MB)
+**Last Updated**: 2026-10-06
+**Replaces**: the 8 TeV BACON `Wqq/` skims, which carried no generator weights (tt̄ could not be normalised). They were removed; they are last present in commit 75b111d.
 
-### Skim recipe
-- Cuts: `vjet0_pt > 300 GeV` AND `vjet0_msd0 > 20 GeV`
-- Branches: 20 of 128 retained (17 substructure features + msd0 + pt + trigger)
-- Compression: ROOT with ZSTD level 22
-- Splits: sequential by event index, sized to fit under GitHub's 100 MB per-file limit
+### Layout
+- **Parts.** `<Sample>_part<k>.root`, trees named `Events`, ZSTD level 22.
+- **Order.** Each sample is split sequentially by entry, so concatenating the parts in `k` order restores the raw-row order. doppio's folds are keyed on that order.
+- **Rebuild.** Build scripts, file lists and provenance are in `WqqOpenData/README.md` and `WqqOpenData/scripts/`. `WqqOpenData/parts.json` holds per-part entries, bytes and MD5s.
 
 ### Files
 
 | File | Events | Size | MD5 |
 |---|---|---|---|
-| `Wqq/TT_skim.root` | 270,573 | 19 MB | `d5a9fe7b14dcd3ef7bdf0a559a0cea8f` |
-| `Wqq/QCD_skim_part0.root` | 930,916 | 67 MB | `8fb1840385d1f070dc538eff2188782b` |
-| `Wqq/QCD_skim_part1.root` | 930,916 | 67 MB | `40a3a7e4ce9c88336ab8b128c16eb888` |
-| `Wqq/QCD_skim_part2.root` | 930,916 | 67 MB | `23bad0f359df6f84d22646262048123e` |
-| `Wqq/JetHT_skim_part0.root` | 1,245,675 | 89 MB | `d9df20ed2f397c370fe3d949af331561` |
-| `Wqq/JetHT_skim_part1.root` | 1,245,675 | 89 MB | `4a97cb21e3457bfd7729936ba32f0bc7` |
-| `Wqq/JetHT_skim_part2.root` | 1,245,675 | 89 MB | `6734c7bf4978e79f14f4c9576771c3fa` |
-| `Wqq/JetHT_skim_part3.root` | 1,245,675 | 89 MB | `b30336fdd28a38c41bc29ade9e337ce5` |
-| `Wqq/JetHT_skim_part4.root` | 1,245,675 | 89 MB | `50cafbbd7350ac781fd832a50da2289b` |
-| `Wqq/WQQ_sh.root` (signal MC) | 125,418 | 32 MB | `a4834a3a7f1f79d7f33da2dff0625deb` |
-| `Wqq/WQQ_s.root` (signal demo) | 749 | 237 KB | `04f629fe7b66654a1dd27035b8e53969` |
-| `Wqq/ZQQ_sh.root` (signal MC) | 107,867 | 28 MB | `b040739ad75d20bab0e48636bdfeb9d0` |
-| `Wqq/ZQQ_s.root` (signal demo) | 589 | 197 KB | `eeb75f579f38195aace91d692f88e3d9` |
+| `WqqOpenData/JetHT_part0.root` | 1,314,783 | 82.3 MB | `4acddb9d62029e86667ca2a930b17fa2` |
+| `WqqOpenData/JetHT_part1.root` | 1,314,783 | 82.2 MB | `5497552c940feae4db505af87ffb4235` |
+| `WqqOpenData/JetHT_part2.root` | 1,314,783 | 82.5 MB | `419838a262da72a997babc82a888856a` |
+| `WqqOpenData/JetHT_part3.root` | 1,314,783 | 82.6 MB | `176adce53f8c53a921565062103fea6f` |
+| `WqqOpenData/JetHT_part4.root` | 238,329 | 15.4 MB | `281a9be427f8e61dade422b840533dca` |
+| `WqqOpenData/QCD_part0.root` | 1,236,510 | 82.0 MB | `e1b2141a6b3f3a57709bdec1e937361d` |
+| `WqqOpenData/QCD_part1.root` | 1,236,510 | 81.2 MB | `8939d9487076e67851b38e436f36131d` |
+| `WqqOpenData/QCD_part2.root` | 1,236,510 | 81.4 MB | `98f53e3931aabec23c82002edd8a4d17` |
+| `WqqOpenData/QCD_part3.root` | 1,236,510 | 81.1 MB | `2f92a18e5dc51fead484cb37ab21ae13` |
+| `WqqOpenData/QCD_part4.root` | 1,236,510 | 81.0 MB | `06694b8f4801df237cb3439882c7c1f2` |
+| `WqqOpenData/QCD_part5.root` | 1,236,510 | 81.6 MB | `69e1830b0f609228958c4889073ae4ab` |
+| `WqqOpenData/QCD_part6.root` | 1,236,510 | 82.3 MB | `b8c532f70b88fd64373290ee136b12a0` |
+| `WqqOpenData/QCD_part7.root` | 127,608 | 8.8 MB | `e465dbdb905690f78016d19233746f8e` |
+| `WqqOpenData/TT_part0.root` | 264,909 | 21.5 MB | `45e57b50f212f0be5604d5d13fad7594` |
+| `WqqOpenData/WQQ_part0.root` | 887,396 | 66.8 MB | `02fd488afdaccc80adaa6b32f059b4a4` |
+| `WqqOpenData/ZQQ_part0.root` | 523,764 | 39.7 MB | `80f666cfe4bbf9b2e538881caec327fc` |
 
-The W and Z signal MC files are the original BACON ntuples (125 branches, default ROOT compression); they were small enough that the skim/branch reduction applied to QCD/JetHT/TT was unnecessary. The `*_s.root` files are tiny dev subsets used as the loader's `WQQ_FALLBACK_SIGNAL_FILE`.
-
-See `Wqq/README.md` for full provenance, the skim script, and usage notes.
+See `WqqOpenData/README.md` for record IDs, cross sections, luminosity, selection and validation.
 
 ## Verifying Data Integrity
 
@@ -93,18 +94,21 @@ md5sum -c <<EOF
 271cf5e71fc756b2a8d2b32730689bdb  dijet/events_anomalydetection_v2.features.h5
 1503edb90e7365bc401ce34a6c8e19e9  bbgg/bkg_bb_aa.h5
 160ef2805ddd8bcafe1311ee8fb478d0  bbgg/sm_dihiggs.h5
-d5a9fe7b14dcd3ef7bdf0a559a0cea8f  Wqq/TT_skim.root
-8fb1840385d1f070dc538eff2188782b  Wqq/QCD_skim_part0.root
-40a3a7e4ce9c88336ab8b128c16eb888  Wqq/QCD_skim_part1.root
-23bad0f359df6f84d22646262048123e  Wqq/QCD_skim_part2.root
-d9df20ed2f397c370fe3d949af331561  Wqq/JetHT_skim_part0.root
-4a97cb21e3457bfd7729936ba32f0bc7  Wqq/JetHT_skim_part1.root
-6734c7bf4978e79f14f4c9576771c3fa  Wqq/JetHT_skim_part2.root
-b30336fdd28a38c41bc29ade9e337ce5  Wqq/JetHT_skim_part3.root
-50cafbbd7350ac781fd832a50da2289b  Wqq/JetHT_skim_part4.root
-a4834a3a7f1f79d7f33da2dff0625deb  Wqq/WQQ_sh.root
-04f629fe7b66654a1dd27035b8e53969  Wqq/WQQ_s.root
-b040739ad75d20bab0e48636bdfeb9d0  Wqq/ZQQ_sh.root
-eeb75f579f38195aace91d692f88e3d9  Wqq/ZQQ_s.root
+4acddb9d62029e86667ca2a930b17fa2  WqqOpenData/JetHT_part0.root
+5497552c940feae4db505af87ffb4235  WqqOpenData/JetHT_part1.root
+419838a262da72a997babc82a888856a  WqqOpenData/JetHT_part2.root
+176adce53f8c53a921565062103fea6f  WqqOpenData/JetHT_part3.root
+281a9be427f8e61dade422b840533dca  WqqOpenData/JetHT_part4.root
+e1b2141a6b3f3a57709bdec1e937361d  WqqOpenData/QCD_part0.root
+8939d9487076e67851b38e436f36131d  WqqOpenData/QCD_part1.root
+98f53e3931aabec23c82002edd8a4d17  WqqOpenData/QCD_part2.root
+2f92a18e5dc51fead484cb37ab21ae13  WqqOpenData/QCD_part3.root
+06694b8f4801df237cb3439882c7c1f2  WqqOpenData/QCD_part4.root
+69e1830b0f609228958c4889073ae4ab  WqqOpenData/QCD_part5.root
+b8c532f70b88fd64373290ee136b12a0  WqqOpenData/QCD_part6.root
+e465dbdb905690f78016d19233746f8e  WqqOpenData/QCD_part7.root
+45e57b50f212f0be5604d5d13fad7594  WqqOpenData/TT_part0.root
+02fd488afdaccc80adaa6b32f059b4a4  WqqOpenData/WQQ_part0.root
+80f666cfe4bbf9b2e538881caec327fc  WqqOpenData/ZQQ_part0.root
 EOF
 ```

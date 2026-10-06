@@ -1,0 +1,123 @@
+{
+  "JetHT": {
+    "entries": 5497461,
+    "parts": [
+      {
+        "file": "JetHT_part0.root",
+        "entries": 1314783,
+        "bytes": 82329180,
+        "md5": "4acddb9d62029e86667ca2a930b17fa2"
+      },
+      {
+        "file": "JetHT_part1.root",
+        "entries": 1314783,
+        "bytes": 82153643,
+        "md5": "5497552c940feae4db505af87ffb4235"
+      },
+      {
+        "file": "JetHT_part2.root",
+        "entries": 1314783,
+        "bytes": 82488409,
+        "md5": "419838a262da72a997babc82a888856a"
+      },
+      {
+        "file": "JetHT_part3.root",
+        "entries": 1314783,
+        "bytes": 82636180,
+        "md5": "176adce53f8c53a921565062103fea6f"
+      },
+      {
+        "file": "JetHT_part4.root",
+        "entries": 238329,
+        "bytes": 15361363,
+        "md5": "281a9be427f8e61dade422b840533dca"
+      }
+    ]
+  },
+  "QCD": {
+    "entries": 8783178,
+    "parts": [
+      {
+        "file": "QCD_part0.root",
+        "entries": 1236510,
+        "bytes": 82006420,
+        "md5": "e1b2141a6b3f3a57709bdec1e937361d"
+      },
+      {
+        "file": "QCD_part1.root",
+        "entries": 1236510,
+        "bytes": 81154266,
+        "md5": "8939d9487076e67851b38e436f36131d"
+      },
+      {
+        "file": "QCD_part2.root",
+        "entries": 1236510,
+        "bytes": 81354170,
+        "md5": "98f53e3931aabec23c82002edd8a4d17"
+      },
+      {
+        "file": "QCD_part3.root",
+        "entries": 1236510,
+        "bytes": 81101418,
+        "md5": "2f92a18e5dc51fead484cb37ab21ae13"
+      },
+      {
+        "file": "QCD_part4.root",
+        "entries": 1236510,
+        "bytes": 80963080,
+        "md5": "06694b8f4801df237cb3439882c7c1f2"
+      },
+      {
+        "file": "QCD_part5.root",
+        "entries": 1236510,
+        "bytes": 81564831,
+        "md5": "69e1830b0f609228958c4889073ae4ab"
+      },
+      {
+        "file": "QCD_part6.root",
+        "entries": 1236510,
+        "bytes": 82284706,
+        "md5": "b8c532f70b88fd64373290ee136b12a0"
+      },
+      {
+        "file": "QCD_part7.root",
+        "entries": 127608,
+        "bytes": 8772602,
+        "md5": "e465dbdb905690f78016d19233746f8e"
+      }
+    ]
+  },
+  "TT": {
+    "entries": 264909,
+    "parts": [
+      {
+        "file": "TT_part0.root",
+        "entries": 264909,
+        "bytes": 21469127,
+        "md5": "45e57b50f212f0be5604d5d13fad7594"
+      }
+    ]
+  },
+  "WQQ": {
+    "entries": 887396,
+    "parts": [
+      {
+        "file": "WQQ_part0.root",
+        "entries": 887396,
+        "bytes": 66827458,
+        "md5": "02fd488afdaccc80adaa6b32f059b4a4"
+      }
+    ]
+  },
+  "ZQQ": {
+    "entries": 523764,
+    "parts": [
+      {
+        "file": "ZQQ_part0.root",
+        "entries": 523764,
+        "bytes": 39702479,
+        "md5": "80f666cfe4bbf9b2e538881caec327fc"
+      }
+    ]
+  }
+}
